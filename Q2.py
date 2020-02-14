@@ -11,8 +11,8 @@ palavraEncontrada = []
 palavras = {}
 
 for frase in dados:
-    palavraEncontrada = re.findall(r'\b[^\s]+', frase)
-
+    palavraEncontrada = re.findall(r'(?<![\[\]\(\)])\b[^\s]+(?<![\[\]\(\)])', frase) #considero que números também valem
+                                                                                     #como palavras
     if palavraEncontrada:
         for palavra in palavraEncontrada:
             palavra = palavra.lower()
@@ -22,7 +22,9 @@ for frase in dados:
             else:
                 palavras[palavra] += 1
 
-print(palavras)
+palavrasOrd = {p: valor for p, valor in sorted(palavras.items(), key = lambda item: -item[1])}
+
+print(palavrasOrd)
 
 with open('corpus-q2-resposta.json', 'w', encoding = 'utf-8') as q2resposta:
-    json.dump(palavras, q2resposta, indent = 4)
+    json.dump(palavrasOrd, q2resposta, indent = 4, ensure_ascii = False)
