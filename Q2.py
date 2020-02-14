@@ -10,8 +10,8 @@ dados = data['gr'].append(data['gi'])
 palavraEncontrada = []
 palavras = {}
 
-for line in dados:
-    palavraEncontrada = re.findall(r'(?<!\S)(\w+)(?!\S)', line)
+for frase in dados:
+    palavraEncontrada = re.findall(r'\b[^\s]+', frase)
 
     if palavraEncontrada:
         for palavra in palavraEncontrada:
@@ -25,4 +25,4 @@ for line in dados:
 print(palavras)
 
 with open('corpus-q2-resposta.json', 'w', encoding = 'utf-8') as q2resposta:
-    json.dump(palavras, q2resposta)
+    json.dump(palavras, q2resposta, indent = 4)
