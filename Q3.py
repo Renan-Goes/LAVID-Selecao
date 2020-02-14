@@ -7,7 +7,7 @@ dados = data['gr'].append(data['gi'])
 
 with open('corpus-q3-resposta.txt', 'w') as q3resposta:
     for frase in dados:
-        fraseDirecional = re.search(r'\b(1|2|3)(P|S)\w+?(1|2|3)(P|S)\b', frase)
+        fraseDirecional = re.search(r'\b(1|2|3)(P|S)(\w+)?(r|R_)(1|2|3)(P|S)\b', frase)
         if fraseDirecional:
             for letraPrimeira in ['S', 'P']:
                 frase = re.sub(r'\b(1|2|3)(P|S)', r'\1'+letraPrimeira, frase)
@@ -19,5 +19,4 @@ with open('corpus-q3-resposta.txt', 'w') as q3resposta:
                             frase = re.sub(r'(1|2|3)(P|S)\b', str(j)+r'\2', frase)
                             q3resposta.write(frase+'\n')
         else:
-            print(frase)
             q3resposta.write(frase+'\n')
