@@ -11,7 +11,7 @@ palavraEncontrada = []
 palavras = {}
 
 for frase in dados:
-    palavraEncontrada = re.findall(r'(?<![\[\]\(\)])\b[^\s]+(?<![\[\]\(\)])', frase) #considero que números também valem
+    palavraEncontrada = re.findall(r'(?<![\[\]\(\)\{\}])\b[^\s]+(?<![\[\]\(\)\{\}])', frase) #considero que números também valem
                                                                                      #como palavras
     if palavraEncontrada:
         for palavra in palavraEncontrada:
