@@ -18,5 +18,3 @@ with open('corpus-q3-resposta.txt', 'w') as q3resposta:
                         for j in range(1, 4):
                             frase = re.sub(r'(1|2|3)(P|S)\b', str(j)+r'\2', frase)
                             q3resposta.write(frase+'\n')
-        else:
-            q3resposta.write(frase+'\n')
