@@ -2,7 +2,7 @@ import re
 import csv
 import pandas as pd
 
-data = pd.read_csv("corpus-q1-resposta.csv")
+data = pd.read_csv("corpus-q1-v2.csv")
 
 saida = data.replace(to_replace = r'(S|P)(1-3)', value = r'\2\1', regex = True)
 
